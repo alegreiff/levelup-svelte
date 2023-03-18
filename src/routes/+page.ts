@@ -4,11 +4,11 @@ import type { PageLoad } from "./$types"
 
 export const load:PageLoad  = async ({fetch, parent}) => {
     const parent_data = await parent();
-    console.log("PARENT DATA", parent_data)
+    console.log("PARENT DATA")
     const res = await fetch('https://fuga.alegreiff.com/wp-json/pcentro/v1/emprende')
     
     const data = await res.json()
-    console.log(data )
+    //console.log(data )
     return {
         hello: 'MUNDO',
         emprende: data.emprendimientos,

@@ -3,9 +3,9 @@ import type { PageLoad } from "./$types"
 
 //loading function
 
-export const load:PageLoad  = async ({fetch, params, parent, setHeaders}) => {
+export const load:PageLoad  = async ({fetch, params, parent, setHeaders, locals}) => {
    
-
+   //console.log("LOCALS",locals)
    const parent_data = await parent();
     console.log("HIJO PARENT DATA", parent_data)
    const res = await fetch(`https://syntax.fm/api/shows/${params.num}`)   
@@ -15,7 +15,8 @@ export const load:PageLoad  = async ({fetch, params, parent, setHeaders}) => {
       'Cache-Control': 'max-age=3600'
    })
    return {
-      episode: data
+      episode: data,
+      user: locals.user
    }
 }
 
